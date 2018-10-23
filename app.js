@@ -11,18 +11,18 @@ app.get('/', function (req, res) {
   res.redirect('index.html');
 });
 
-server.listen(3000);
+//server.listen(3000);
 
-/*// Define the port to run on
+// Define the port to run on
 app.set('port', process.env.PORT || 3000);
 
 // Listen for requests
 var server = app.listen(app.get('port'), function() {
   var port = server.address().port;
   console.log('Magic happens on port ' + port);
-});*/
+});
 
-/*io.on('connection', function (socket) {
+io.on('connection', function (socket) {
   socket.emit('recieve matrix', matrix);
 
   var interval = setInterval( function(){
@@ -30,4 +30,4 @@ var server = app.listen(app.get('port'), function() {
                                         }, 200);
 
   socket.on('stop-draw', function(){clearInterval(interval);})
-});*/
+});
