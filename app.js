@@ -11,7 +11,6 @@ app.get('/', function (req, res) {
   res.redirect('index.html');
 });
 
-//server.listen(3000);
 
 // Define the port to run on
 app.set('port', process.env.PORT || 3000);
@@ -21,6 +20,8 @@ var server = app.listen(app.get('port'), function() {
   var port = server.address().port;
   console.log('Magic happens on port ' + port);
 });
+
+server.listen(3000);
 
 io.on('connection', function (socket) {
   socket.emit('recieve matrix', matrix);
