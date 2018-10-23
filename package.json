@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/ProgCrasher/Final_Project#readme",
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.16.4",
     "socket.io": "^2.1.1"
   },
   "engines": {
-    "node": "4.7.2"
+    "node": "8.11.3"
   },
   "devDependencies": {},
   "description": ""
