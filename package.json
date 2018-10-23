@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/ProgCrasher/Final_Project#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "socket.io": "^2.1.1"
   },
   "engines": {
     "node": "4.7.2"

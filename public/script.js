@@ -1,23 +1,3 @@
-var n =80;
-var m =80;
-var side = 7;
-
-
-/////////////////////////////////////////
-var matrix1 = randomMatrix(n/4, m,0,2);
-var matrix2 = randomMatrix(n/2, m,0,3);
-var matrix3 = randomMatrix(n/4, m,0,2);
-matrix = matrix1.concat(matrix2).concat(matrix3);
-for (var i = 50; i < n; i++) {
-	for (var z = 0; z <= m-50; z++) {
-		matrix[i][z]=4;
-	}
-}
-for (var i = 0; i < n/2; i++) {
-	for (var z = m-30; z <= m; z++) {
-		matrix[i][z]=5;
-	}
-}
 /////////////////////////////////////////
 
 var grassArr = [];
@@ -26,12 +6,38 @@ var predator = [];
 var mutant = [];
 var knight = [];
 var viruspred=[];
+var socket;
+var matrix;
+
+var side = 7;
 
 ////////////////////////////////////////
 function setup() {
-	createCanvas(matrix[0].length * side, matrix.length * side);
-	background('#acacac');
-	var k = 0;     //0
+	frameRate(0);
+
+	socket = io.connect();
+
+	window.addEventListener('click', function(){
+		socket.emit('stop-draw');
+	});
+	
+	socket.on('recieve matrix', function (mtx){
+		matrix = mtx;
+		createCanvas(matrix[0].length * side, matrix.length * side);
+		background('#acacac');
+		socket.on('redraw', redrawMatrix);
+		noLoop();
+	});
+
+	function redrawMatrix(mtx)
+	{
+		matrix = mtx;
+		redraw();
+		console.log("I work");
+	}
+
+	
+	/*var k = 0;     //0
 	var m = -1;     //3
 	var e = -1;       //2
 	
@@ -79,7 +85,7 @@ function setup() {
 				viruspred.push(new VirusPred(x, y, 6));
 			}
 		}
-	}
+	}*/
 
 }
 
@@ -118,11 +124,9 @@ function draw() {
 			}
 		}
 	}
-	//xoti metodneri kanch
+	/*//xoti metodneri kanch
 	for (var i in grassArr) {
 		grassArr[i].mul();
-    
-
 	}
 	//xotakeri metodneri kanch
 	for (var i in grassEater) {
@@ -170,29 +174,8 @@ function draw() {
 		text('Survival is over', 10, 60);
 	}
 
-	frameRate(5);
+	frameRate(5);*/
 }
-
-
-//random matrix function
-function randomMatrix(m, n,z,k) {
-	var matrix = [];
-	for (var y = 0; y < m; y++) {
-		matrix[y] = []
-		for (var x = 0; x < n; x++) {
-
-			matrix[y][x] = getRandomBetween(z, k);
-
-		}
-	}
-	return matrix;
-}
-
-//random integer function
-function getRandomBetween(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 
 /* manual framerate
 var x = 7;
