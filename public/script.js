@@ -15,7 +15,7 @@ var side = 7;
 function setup() {
 	frameRate(0);
 
-	socket = io.connect();
+	socket = io.connect('http://localhost:3000');
 
 	window.addEventListener('click', function(){
 		socket.emit('stop-draw');
