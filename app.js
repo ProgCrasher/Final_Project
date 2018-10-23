@@ -22,7 +22,7 @@ var server = app.listen(app.get('port'), function() {
   console.log('Magic happens on port ' + port);
 });*/
 
-io.on('connection', function (socket) {
+/*io.on('connection', function (socket) {
   socket.emit('recieve matrix', matrix);
 
   var interval = setInterval( function(){
@@ -30,4 +30,4 @@ io.on('connection', function (socket) {
                                         }, 200);
 
   socket.on('stop-draw', function(){clearInterval(interval);})
-});
+});*/
